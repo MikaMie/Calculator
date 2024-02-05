@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        body {
+            background-color: rgb(211, 244, 252);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 {
+            font-family: Arial;
+        }
+        .border {
+            border: 1px solid black;
+            padding-bottom: 20px;
+            padding-top: 20px;
+            width: 600px;
+            border-radius: 10px;
+            box-shadow: 1px 1px 4px; rgba(0,0,0, 0.25);
+            background-color: rgb(227, 227, 227);
+            
+        }
+        button {
+            width: 60px;
+            height: 60px;
+            border: 1px solid black;
+            border-radius: 5px;
+            background-color: rgb(255, 243, 209);
+            box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.25);
+            cursor: pointer;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        button:hover {
+            background-color: rgb(253, 236, 189) ;
+        }
+        .overlay {
+            display: grid;
+            width: 1fr;
+            justify-content: center;
+            row-gap: 4px;
+            margin-bottom: 30px;
+        }
+        .calculation {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            margin-bottom: 30px;
+        }
+        .calc {
+            background-color: lightskyblue;
+        }
+        .calc:hover {
+            background-color: rgb(111, 198, 252);
+        }
+        .evaluate {
+            display: flex;
+            width: 255px;
+            justify-content: center;
+            flex: 1 1;
+            margin-left: 173px;
+            gap: 5px;
+            margin-bottom: 30px;
+        }
+        .eval {
+            background-color: lightsalmon;
+            width: 180px;
+        }
+        .eval:hover {
+            background-color: rgb(252, 150, 110);
+        }
+        .result {
+            text-align: center;
+            font-size: 30px;
+            font-weight: bold;
+        }
+    </style>
+    </head>
+<body>
+    <h1>Calculator</h1>
+
+    <div class="border">
+        <div class="overlay">
+            <div class="row-one">
+                <button id="7" onclick="addToEvaluation(this)">7</button>
+                <button id="8" onclick="addToEvaluation(this)">8</button>
+                <button id="9" onclick="addToEvaluation(this)">9</button>
+            </div>
+            <div class="row-two">
+                <button id="4" onclick="addToEvaluation(this)">4</button>
+                <button id="5" onclick="addToEvaluation(this)">5</button>
+                <button id="6" onclick="addToEvaluation(this)">6</button>
+            </div>
+            <div class="row-three">
+                <button id="1" onclick="addToEvaluation(this)">1</button>
+                <button id="2" onclick="addToEvaluation(this)">2</button>
+                <button id="3" onclick="addToEvaluation(this)">3</button>
+            </div>
+        </div>
+        <div class="calculation">
+            <button id="+" class="calc" onclick="addToEvaluation(this)">+</button>
+            <button id="-" class="calc" onclick="addToEvaluation(this)">-</button>
+            <button id="*" class="calc" onclick="addToEvaluation(this)">*</button>
+            <button id="/" class="calc" onclick="addToEvaluation(this)">/</button>
+        </div>
+        <div class="evaluate">
+            <button class="eval" onclick="calculateResult()">=</button>
+            <button onclick="reset()">C</button>
+        </div>
+        <div class="result"></div>
+    </div>
+    
+
+    <script>
+        let evaluation = '';
+
+        function addToEvaluation(value){
+           evaluation += value.id;
+           document.querySelector('.result').innerHTML = evaluation;
+        }
+
+        function calculateResult() {
+            let result = document.querySelector('.result');
+            result.innerHTML = eval(evaluation);
+        }
+        
+        function reset(){
+            document.querySelector('.result').innerHTML = '';
+            evaluation = '';
+        }
+
+
+
+    </script>
+</body>
+</html>
